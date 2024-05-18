@@ -1,0 +1,30 @@
+syntax="proto3";
+option java_package="hajji.mohammed.stubs";
+
+
+service BanqueService {
+  rpc unaryModel(ObjectRequest) returns (ObjectResponse);
+  rpc serverStreamModel(ObjectRequest) returns (stream ObjectResponse);
+  rpc clientStreamModel(stream ObjectRequest) returns (ObjectResponse);
+  rpc fullStreamModel(stream ObjectRequest) returns (stream ObjectResponse);
+}
+
+message ObjectRequest {
+  Currency from = 1;
+  Currency to = 2;
+  double amount = 3;
+}
+
+message ObjectResponse {
+  Currency from = 1;
+  Currency to = 2;
+  double amount = 3;
+  double result = 4;
+}
+
+enum Currency {
+  UNKNOWN = 0;
+  EURO = 1;
+  USD = 2;
+  DH = 3;
+}
